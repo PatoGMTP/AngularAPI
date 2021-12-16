@@ -1,0 +1,35 @@
+ul
+{
+    border: 1px solid black;
+    border-left: none;
+
+    padding: .25em 0 .25em;
+
+    display: flex;
+    flex-flow: column;
+
+    height: 20em;
+    width: 4em;
+
+    gap: 3px;
+
+    li
+    {
+        text-align: center;
+
+        &:hover
+        {
+            // background-color: darken(white, 10%);
+        }
+    }
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+      }
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

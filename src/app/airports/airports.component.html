@@ -1,0 +1,15 @@
+<select
+    multiple
+    ngModel
+    #table
+    ngDefaultControl
+    (keydown.arrowup)="readup($event)"
+    (keydown.arrowdown)="readdown($event)"
+    (keydown.enter)="choose($event, 0)"
+>
+    <option
+        *ngFor="let item of airports; index as i"
+        [id]="i"
+        (click)="choose($event, i)"
+    ><p class="special_text">{{item}}</p></option>
+</select>

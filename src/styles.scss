@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+*
+{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: large;
+    // -webkit-user-select: none;
+    // -moz-user-select: none;
+    // -ms-user-select: none;
+    // user-select: none;
+}
+
+html, body
+{
+    height: 100%;
+}
+
+ul
+{
+    list-style: none;
+    // border-collapse: collapse;
+}
+
+::selection
+{
+    background: white;
+    color: white;
+}
+
+::-moz-selection
+{
+    background: white;
+    color: white;
+}
+
+*::selection {
+    /* WebKit/Blink Browsers */
+    background-color: rgba(0,0,0,.99); /* black */
+    color: #ffffff; /* white */
+}
+
+*::-moz-selection {
+    /* Gecko Browsers */
+    background: #000000; /* black */
+    color: #ffffff; /* white */
+}
+
+*::-webkit-selection { background:#D03E27; }
+
+*:active
+{
+    background: green;
+    background-color: greenyellow;
+    outline: none;
+}
+
+*:focus
+{
+    background: purple;
+    background-color: purple;
+    outline: none;
+}

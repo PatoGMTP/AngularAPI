@@ -1,0 +1,3 @@
+<ul aria-activedescendant="0" role="menu" #table ngDefaultControl>
+    <li *ngFor="let item of planes; index as i" [id]="i" role="menuitem" [tabindex]="i === 0 ? 0 : -1">{{item}}</li>
+</ul>
