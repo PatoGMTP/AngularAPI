@@ -1,6 +1,8 @@
 import { Component, OnChanges, OnInit, SimpleChanges, Input } from '@angular/core';
 import { PlanedataService } from '../planedata.service';
+import { StaticmapService } from '../staticmap.service';
 import {decode, encode} from '@mapbox/polyline';
+import { myplane } from '../planeInt';
 
 @Component({
   selector: 'app-flight-graph',
@@ -9,29 +11,61 @@ import {decode, encode} from '@mapbox/polyline';
 })
 export class FlightGraphComponent implements OnChanges {
 
-  @Input() plane?: {icao24: string, time: number};
+  @Input() airport!: string;
+
+  @Input() plane!: myplane;
 
   path_arr: [number, number][] = [];
 
+  height_data: number[] = [];
+
+  time_data: number[] = []
+
   path: string = "";
   
-  constructor(private planedata: PlanedataService) { }
+  constructor
+  (
+    private planedata: PlanedataService,
+    private staticmaps: StaticmapService,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  graph?:any = null;
+
   ngOnChanges(changes: SimpleChanges): void {
       this.planedata.getData(this.plane!.icao24,this.plane!.time).subscribe(resp => {
         console.log(resp)
+        this.height_data = [];
+        this.time_data = [];
+        this.path_arr = [];
+        // let temptime = (new Date().getTime()) / 1000;
+        let temptime = resp.path[resp.path.length-1][0]
         resp.path.forEach(item => {
           console.log(item[1], item[2]);
-          this.path_arr.push([item[1], item[2]])
+          // this.path_arr.push([item[1], item[2]])
+          this.path_arr.push([item[2], item[1]])
+          this.height_data.push(item[3]);
+          this.time_data.push((item[0]-temptime)/(60*24));
         });
 
-        console.log(this.path)
-        this.path = encode(this.path_arr);
-        console.log(this.path)
+        // console.log(this.path)
+        // this.path = encode(this.path_arr);
+        // console.log(this.path)
+
+        this.staticmaps.getData(this.path_arr, this.path_arr[0], this.airport);
+
+        this.graph = {
+          data: [
+              { x: this.time_data, y: this.height_data, type: 'scatter', mode: 'lines+points', marker: {color: 'red'} },
+          ],
+          layout: {width: 800, height: 500, title: this.plane.icao24}
+        };
+
       });
   }
+
+  
 
 }

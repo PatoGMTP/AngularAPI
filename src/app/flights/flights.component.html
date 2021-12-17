@@ -1,5 +1,5 @@
 <div class="top">
-    <p>flights works!</p>
+    <!-- <p>flights works!</p> -->
     Stuff in the top goes here
 </div>
 
@@ -13,11 +13,14 @@
     ></app-planes>
 
     <app-flight-graph
+        [airport]="selectedAirport"
         [plane]="selectedPlane"
         *ngIf="selectedPlane.icao24 != ''"
     >
     </app-flight-graph>
 </div>
 
-{{selectedAirport}}
+<!-- {{selectedAirport}}
 {{selectedPlane.icao24}}
+
+<plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot> -->

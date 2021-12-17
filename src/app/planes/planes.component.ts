@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { AirportdataService } from '../airportdata.service';
+import { myplane } from '../planeInt';
 
 @Component({
   selector: 'app-planes',
@@ -77,7 +78,10 @@ export class PlanesComponent implements OnChanges {
     if (index !== -1) this.index = index;
     this.lis[this.index].focus();
 
-    let output = {icao24: this.lis[this.index].innerText, time: this.fulldata![this.index].lastSeen-600}
+    let output: myplane = {
+      icao24: this.lis[this.index].innerText,
+      time: this.fulldata![this.index].lastSeen-600,
+      estDepartureAirport: this.fulldata![this.index].estDepartureAirport}
 
     this.select.emit(output);
   }

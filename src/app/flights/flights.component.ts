@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { myplane } from '../planeInt';
 import { StaticmapService } from '../staticmap.service';
 
 @Component({
@@ -10,12 +11,11 @@ export class FlightsComponent implements OnInit {
 
   selectedAirport: string = '';
 
-  selectedPlane: {icao24: string, time: number} = {icao24: "", time: 0};
+  selectedPlane: myplane = {icao24: "", time: 0, estDepartureAirport: ""}//, heigthdata: [], timedata: []};
 
   constructor(private maps: StaticmapService) { }
 
   ngOnInit(): void {
-    this.maps.getData();
   }
 
   updateAirport(airport: string): void
@@ -25,4 +25,12 @@ export class FlightsComponent implements OnInit {
     // setTimeout(() => {
     // }, 1);
   }
+
+  // public graph = {
+  //   data: [
+  //       { x: [1, 2, 3], y: [2, 6, 3], type: 'scatter', mode: 'lines+points', marker: {color: 'red'} },
+  //       { x: [1, 2, 3], y: [2, 5, 3], type: 'bar' },
+  //   ],
+  //   layout: {width: 320, height: 240, title: 'A Fancy Plot'}
+  // };
 }

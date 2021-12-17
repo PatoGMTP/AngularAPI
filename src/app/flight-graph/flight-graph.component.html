@@ -1,1 +1,3 @@
-<p>flight-graph works!</p>
+<!-- <p>{{plane.icao24}}</p> -->
+
+<plotly-plot class="graph" *ngIf="graph != null" [data]="graph.data" [layout]="graph.layout"></plotly-plot>
