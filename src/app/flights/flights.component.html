@@ -1,17 +1,21 @@
 
 <div class="top">
+    <!-- Swap between graph and picture -->
     <button (click)="toggle()">Toggle</button>
 </div>
 
 <div class="bottom">
+    <!-- 1. First pick an airport -->
     <app-airports (select)="updateAirport($event)"></app-airports>
 
+    <!-- 2. Then pick a plane -->
     <app-planes
         [airport]="selectedAirport"
         *ngIf="selectedAirport != ''"
         (select)="selectedPlane = $event"
     ></app-planes>
 
+    <!-- 3. Then see the graphs and pictures! -->
     <app-flight-graph
         [airport]="selectedAirport"
         [plane]="selectedPlane"

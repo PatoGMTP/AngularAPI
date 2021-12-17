@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class AirportdataService {
 
-  api_url: string = 'https://PatoGM117:LegitDuck117!@opensky-network.org/api/flights/arrival?airport='
-
   constructor
   (
     private http: HttpClient
@@ -22,4 +20,18 @@ export class AirportdataService {
       .get<{icao24: string, estDepartureAirport: string, lastSeen: number}[]>
       (this.api_url+input+`&begin=${time-(60*60*24*2)}&end=${time}`);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  api_url: string = 'https://PatoGM117:LegitDuck117!@opensky-network.org/api/flights/arrival?airport='
 }

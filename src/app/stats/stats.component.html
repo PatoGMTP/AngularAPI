@@ -1,11 +1,14 @@
 
 <div class="top">
-    
+    <!-- Additional options/buttons would go here -->
+    <!-- empty for now! -->
 </div>
 
 <div class="bottom">
+    <!-- 1. First pick an airport -->
     <app-airports (select)="updateAirport($event)"></app-airports>
 
+    <!-- 2. Then see the graphs and pictures! -->
     <app-stats-graph
         [airport]="selectedAirport"
         *ngIf="selectedAirport != ''"
