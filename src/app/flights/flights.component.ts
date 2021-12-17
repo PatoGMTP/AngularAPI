@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StaticmapService } from '../staticmap.service';
 
 @Component({
   selector: 'app-flights',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightsComponent implements OnInit {
 
-  constructor() { }
+  selectedAirport: string = '';
+
+  selectedPlane: {icao24: string, time: number} = {icao24: "", time: 0};
+
+  constructor(private maps: StaticmapService) { }
 
   ngOnInit(): void {
+    this.maps.getData();
   }
 
+  updateAirport(airport: string): void
+  {
+    // this.selectedAirport = '';
+    this.selectedAirport = airport;
+    // setTimeout(() => {
+    // }, 1);
+  }
 }

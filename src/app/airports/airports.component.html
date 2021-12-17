@@ -1,15 +1,17 @@
-<select
+<ul
     multiple
     ngModel
     #table
     ngDefaultControl
     (keydown.arrowup)="readup($event)"
     (keydown.arrowdown)="readdown($event)"
-    (keydown.enter)="choose($event, 0)"
+    (keydown.enter)="choose($event, -1)"
+    (keydown.arrowright)="choose($event, -1)"
 >
-    <option
+    <li
         *ngFor="let item of airports; index as i"
         [id]="i"
         (click)="choose($event, i)"
-    ><p class="special_text">{{item}}</p></option>
-</select>
+        [tabindex]="i === 0 ? 0 : -1"
+    >{{item}}</li>
+</ul>

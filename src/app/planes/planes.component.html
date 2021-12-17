@@ -1,3 +1,17 @@
-<ul aria-activedescendant="0" role="menu" #table ngDefaultControl>
-    <li *ngFor="let item of planes; index as i" [id]="i" role="menuitem" [tabindex]="i === 0 ? 0 : -1">{{item}}</li>
+<ul
+    multiple
+    ngModel
+    #table
+    ngDefaultControl
+    (keydown.arrowup)="readup($event)"
+    (keydown.arrowdown)="readdown($event)"
+    (keydown.enter)="choose($event, -1)"
+    (keydown.arrowright)="choose($event, -1)"
+>
+    <li
+        *ngFor="let item of planes; index as i"
+        [id]="i"
+        (click)="choose($event, i)"
+        [tabindex]="i === 0 ? 0 : -1"
+    >{{item}}</li>
 </ul>

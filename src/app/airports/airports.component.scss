@@ -1,31 +1,25 @@
-select
+ul
 {
     border: 1px solid black;
 
     padding: .25em 0 .25em;
 
-    // display: flex;
-    // flex-flow: column;
+    display: flex;
+    flex-flow: column;
 
     height: 20em;
     width: 4em;
 
-    gap: 3px;
+    // gap: 3px;
 
-    option
+    li
     {
         text-align: center;
 
         &:hover
         {
-            background-color: darken(white, 10%);
+            // background-color: darken(white, 10%);
             // color: darken(white, 10%);
-        }
-
-        &:checked
-        {
-            background: red;
-            background-color: red;
         }
     }
 

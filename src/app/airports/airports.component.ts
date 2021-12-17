@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-airports',
@@ -7,63 +7,59 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class AirportsComponent implements OnInit {
 
+  @Output() select = new EventEmitter();
+
   @ViewChild('table') table!: ElementRef;
 
   index: number = 0;
 
-  ul!: HTMLSelectElement;
+  ul!: HTMLUListElement;
 
-  lis!: HTMLOptionElement[];
+  lis!: HTMLLIElement[];
 
-  airports: string[] = ["IAH", "BHM", "HSV", "BHM", "HSV", "BHM", "HSV", "BHM", "HSV", "BHM", "HSV", "BHM", "HSV", "BHM", "HSV", "BHM", "HSV"];
+  airports: string[] = [
+    "EDDF", "EGLL", "LIRF", "UUEE"
+  ];
 
   constructor() { }
 
   ngOnInit(): void
   {
-    console.log("airports", this.table)
+    // console.log("airports", this.table)
   }
 
   ngAfterViewInit(): void
   {
-    console.log("airports", this.table)
+    // console.log("airports", this.table)
 
     this.ul = this.table.nativeElement;
-    this.lis = this.ul.children as unknown as HTMLOptionElement[];
+    this.lis = this.ul.children as unknown as HTMLLIElement[];
     this.lis[this.index].focus();
   }
 
   readup(event: any): void
   {
-    console.log(event);
-    // event.preventDefault();
-    // if (this.index != 0)
-    // {
-    //   this.index--;
-    //   this.lis[this.index].focus();
-    // }
+    event.preventDefault();
+
+    if (this.index != 0) this.index--;
+    this.lis[this.index].focus();
   }
 
   readdown(event: Event): void
   {
-    console.log(event);
-    // event.preventDefault();
-    // if (this.index != this.lis.length-1)
-    // {
-    //   this.index++;
-    //   this.lis[this.index].focus();
-    // }
+    event.preventDefault();
+
+    if (this.index != this.lis.length-1) this.index++;
+    this.lis[this.index].focus();
   }
 
-  choose(event: Event, index: number): void
+  choose(event: Event, index: number = -1): void
   {
-    console.log(event);
-    // event.preventDefault();
-    // event.stopPropagation();
-    // this.index = index;
-    // setTimeout(() => {
-    //   this.lis[this.index].focus();
-    //   console.log(index);
-    // }, 100);
+    event.preventDefault();
+
+    if (index !== -1) this.index = index;
+    this.lis[this.index].focus();
+
+    this.select.emit(this.lis[this.index].innerText);
   }
 }

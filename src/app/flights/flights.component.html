@@ -4,7 +4,20 @@
 </div>
 
 <div class="bottom">
-    <app-airports></app-airports>
-    
-    <app-planes></app-planes>
+    <app-airports (select)="updateAirport($event)"></app-airports>
+
+    <app-planes
+        [airport]="selectedAirport"
+        *ngIf="selectedAirport != ''"
+        (select)="selectedPlane = $event"
+    ></app-planes>
+
+    <app-flight-graph
+        [plane]="selectedPlane"
+        *ngIf="selectedPlane.icao24 != ''"
+    >
+    </app-flight-graph>
 </div>
+
+{{selectedAirport}}
+{{selectedPlane.icao24}}
