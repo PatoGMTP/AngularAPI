@@ -23,7 +23,7 @@ export class PlanesComponent implements OnChanges {
 
   fulldata?: {icao24: string, estDepartureAirport: string, lastSeen: number}[];
 
-  planes?: string[];// = Array.from(Array(30).keys()).map(item => item.toString());
+  planes?: string[];
 
   constructor(private airdata: AirportdataService) { }
 
@@ -51,7 +51,6 @@ export class PlanesComponent implements OnChanges {
       }, 1);
       this.fulldata = resp
       console.log(this.fulldata);
-      // console.log(resp)
     });
   }
 

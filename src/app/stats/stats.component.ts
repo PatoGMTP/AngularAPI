@@ -18,10 +18,7 @@ export class StatsComponent implements OnInit {
 
   updateAirport(airport: string): void
   {
-    // this.selectedAirport = '';
     this.selectedAirport = airport;
-    // setTimeout(() => {
-    // }, 1);
   }
 
 }

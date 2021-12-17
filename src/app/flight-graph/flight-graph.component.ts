@@ -43,23 +43,16 @@ export class FlightGraphComponent implements OnChanges {
     {
       console.log(changes)
       this.planedata.getData(this.plane!.icao24,this.plane!.time).subscribe(resp => {
-        // console.log(resp)
         this.height_data = [];
         this.time_data = [];
         this.path_arr = [];
-        // let temptime = (new Date().getTime()) / 1000;
         let temptime = resp.path[resp.path.length-1][0]
+        
         resp.path.forEach(item => {
-          // console.log(item[1], item[2]);
-          // this.path_arr.push([item[1], item[2]])
           this.path_arr.push([item[2], item[1]])
           this.height_data.push(item[3]);
           this.time_data.push((item[0]-temptime)/(60*24));
         });
-  
-        // console.log(this.path)
-        // this.path = encode(this.path_arr);
-        // console.log(this.path)
   
         this.src = this.staticmaps.getData(this.path_arr, this.path_arr[0], this.airport);
   

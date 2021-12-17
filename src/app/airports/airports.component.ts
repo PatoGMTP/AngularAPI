@@ -25,13 +25,11 @@ export class AirportsComponent implements OnInit {
 
   ngOnInit(): void
   {
-    // console.log("airports", this.table)
+    
   }
 
   ngAfterViewInit(): void
   {
-    // console.log("airports", this.table)
-
     this.ul = this.table.nativeElement;
     this.lis = this.ul.children as unknown as HTMLLIElement[];
     this.lis[this.index].focus();

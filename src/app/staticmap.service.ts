@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import stat, { PathOverlay } from '@mapbox/mapbox-sdk/services/static'
-// import * as data from '../assets/airport-codes_json.json';
-// import * as codes from '../assets/short.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StaticmapService {
 
-  to_list = {EDDF: [8.570556, 50.033333], EGLL: [-0.461941, 51.4706], LIRF: [12.2388889, 41.8002778], UUEE: [37.4146, 55.972599]};
+  to_list = {
+    EDDF: [8.570556, 50.033333],
+    EGLL: [-0.461941, 51.4706],
+    LIRF: [12.2388889, 41.8002778],
+    UUEE: [37.4146, 55.972599]
+  };
 
   constructor
   (
@@ -21,7 +24,6 @@ export class StaticmapService {
   {
 
     let mything = stat({ accessToken: "pk.eyJ1IjoicGF0b2dtIiwiYSI6ImNreDg1dXJvZzMyZXEzMXEzZ2ZmZmd0MHQifQ.GkBRwqLwWeTNpy1vNkxElg" });
-    console.log(mything);
     
     const request = mything.getStaticImage({
       ownerId: 'mapbox',

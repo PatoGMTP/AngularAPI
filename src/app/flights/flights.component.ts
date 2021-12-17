@@ -13,7 +13,7 @@ export class FlightsComponent implements OnInit {
 
   selectedAirport: string = '';
 
-  selectedPlane: myplane = {icao24: "", time: 0, estDepartureAirport: ""}//, heigthdata: [], timedata: []};
+  selectedPlane: myplane = {icao24: "", time: 0, estDepartureAirport: ""}
 
   constructor(private maps: StaticmapService) { }
 
@@ -22,22 +22,11 @@ export class FlightsComponent implements OnInit {
 
   updateAirport(airport: string): void
   {
-    // this.selectedAirport = '';
     this.selectedAirport = airport;
-    // setTimeout(() => {
-    // }, 1);
   }
 
   toggle(): void
   {
     this.gmbool = !this.gmbool;
   }
-
-  // public graph = {
-  //   data: [
-  //       { x: [1, 2, 3], y: [2, 6, 3], type: 'scatter', mode: 'lines+points', marker: {color: 'red'} },
-  //       { x: [1, 2, 3], y: [2, 5, 3], type: 'bar' },
-  //   ],
-  //   layout: {width: 320, height: 240, title: 'A Fancy Plot'}
-  // };
 }

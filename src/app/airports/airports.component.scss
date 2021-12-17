@@ -10,16 +10,13 @@ ul
     height: 500px;
     width: 4em;
 
-    // gap: 3px;
-
     li
     {
         text-align: center;
 
         &:hover
         {
-            // background-color: darken(white, 10%);
-            // color: darken(white, 10%);
+            background-color: darken(white, 10%);
         }
 
         &:focus
