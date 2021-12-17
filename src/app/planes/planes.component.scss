@@ -21,6 +21,13 @@ ul
         {
             // background-color: darken(white, 10%);
         }
+
+        &:focus
+        {
+            background: purple;
+            background-color: purple;
+            outline: none;
+        }
     }
 
     overflow-x: hidden;

@@ -1,6 +1,6 @@
 <div class="top">
     <!-- <p>flights works!</p> -->
-    Stuff in the top goes here
+    <button (click)="toggle()">Toggle</button>
 </div>
 
 <div class="bottom">
@@ -16,6 +16,7 @@
         [airport]="selectedAirport"
         [plane]="selectedPlane"
         *ngIf="selectedPlane.icao24 != ''"
+        [gmbool]="gmbool"
     >
     </app-flight-graph>
 </div>

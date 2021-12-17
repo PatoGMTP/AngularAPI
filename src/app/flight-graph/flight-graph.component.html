@@ -1,3 +1,5 @@
 <!-- <p>{{plane.icao24}}</p> -->
 
-<plotly-plot class="graph" *ngIf="graph != null" [data]="graph.data" [layout]="graph.layout"></plotly-plot>
+<plotly-plot class="graph" *ngIf="graph != null && gmbool" [data]="graph.data" [layout]="graph.layout"></plotly-plot>
+
+<img *ngIf="src != '' && !gmbool"  [src]="src" alt="" srcset="">

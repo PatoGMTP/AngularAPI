@@ -9,6 +9,8 @@ import { StaticmapService } from '../staticmap.service';
 })
 export class FlightsComponent implements OnInit {
 
+  gmbool: boolean = true;
+
   selectedAirport: string = '';
 
   selectedPlane: myplane = {icao24: "", time: 0, estDepartureAirport: ""}//, heigthdata: [], timedata: []};
@@ -24,6 +26,11 @@ export class FlightsComponent implements OnInit {
     this.selectedAirport = airport;
     // setTimeout(() => {
     // }, 1);
+  }
+
+  toggle(): void
+  {
+    this.gmbool = !this.gmbool;
   }
 
   // public graph = {
