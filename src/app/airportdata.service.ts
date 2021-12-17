@@ -18,6 +18,6 @@ export class AirportdataService {
   {
     let time = Math.floor((new Date().getTime()) / 1000);// - (60*60*24*7);
     console.log(time)
-    return this.http.get<{icao24: string, estDepartureAirport: string, lastSeen: number}[]>(this.api_url+input+`&begin=${time-(60*60*24)}&end=${time}`);
+    return this.http.get<{icao24: string, estDepartureAirport: string, lastSeen: number}[]>(this.api_url+input+`&begin=${time-(60*60*24*2)}&end=${time}`);
   }
 }

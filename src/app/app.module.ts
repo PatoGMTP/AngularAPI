@@ -15,6 +15,7 @@ import { StatsComponent } from './stats/stats.component';
 import { AirportsComponent } from './airports/airports.component';
 import { PlanesComponent } from './planes/planes.component';
 import { FlightGraphComponent } from './flight-graph/flight-graph.component';
+import { StatsGraphComponent } from './stats-graph/stats-graph.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FlightGraphComponent } from './flight-graph/flight-graph.component';
     StatsComponent,
     AirportsComponent,
     PlanesComponent,
-    FlightGraphComponent
+    FlightGraphComponent,
+    StatsGraphComponent
   ],
   imports: [
     BrowserModule,

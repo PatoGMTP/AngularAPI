@@ -1,8 +1,15 @@
 <div class="top">
-    <p>stats works!</p>
-    Stuff in the top goes here
+    <!-- <p>stats works!</p>
+    Stuff in the top goes here -->
 </div>
 
 <div class="bottom">
-    <app-airports></app-airports>
+    <app-airports (select)="updateAirport($event)"></app-airports>
+
+    <app-stats-graph
+        [airport]="selectedAirport"
+        *ngIf="selectedAirport != ''"
+        [gmbool]="gmbool"
+    >
+    </app-stats-graph>
 </div>

@@ -67,7 +67,7 @@ export class FlightGraphComponent implements OnChanges {
           data: [
               { x: this.time_data, y: this.height_data, type: 'scatter', mode: 'lines+points', marker: {color: 'red'} },
           ],
-          layout: {width: 800, height: 500, title: this.plane.icao24}
+          layout: {width: 800, height: 500, title: this.airport + " : " + this.plane.icao24}
         };
       });
     }

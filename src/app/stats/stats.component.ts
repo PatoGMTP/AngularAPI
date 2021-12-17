@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatsComponent implements OnInit {
 
+  gmbool: boolean = true;
+
+  selectedAirport: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  updateAirport(airport: string): void
+  {
+    // this.selectedAirport = '';
+    this.selectedAirport = airport;
+    // setTimeout(() => {
+    // }, 1);
   }
 
 }
