@@ -22,4 +22,10 @@ describe('StatsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it("should update correctly", () => {
+    component.selectedAirport = "";
+    component.updateAirport("TEST");
+    expect(component.selectedAirport).toBe("TEST");
+  });
 });

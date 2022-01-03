@@ -41,29 +41,35 @@ export class FlightGraphComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['plane'])
     {
-      console.log(changes)
-      this.planedata.getData(this.plane!.icao24,this.plane!.time).subscribe(resp => {
-        this.height_data = [];
-        this.time_data = [];
-        this.path_arr = [];
-        let temptime = resp.path[resp.path.length-1][0]
-        
-        resp.path.forEach(item => {
-          this.path_arr.push([item[2], item[1]])
-          this.height_data.push(item[3]);
-          this.time_data.push((item[0]-temptime)/(60*24));
-        });
-  
-        this.src = this.staticmaps.getData(this.path_arr, this.path_arr[0], this.airport);
-  
-        this.graph = {
-          data: [
-              { x: this.time_data, y: this.height_data, type: 'scatter', mode: 'lines+points', marker: {color: 'red'} },
-          ],
-          layout: {width: 800, height: 500, title: this.airport + " : " + this.plane.icao24}
-        };
-      });
+      console.log(changes);
+      this.getData();
     }
+  }
+
+  getData(): void
+  {
+    console.log(this.plane!.icao24,this.plane!.time);
+    this.planedata.getData(this.plane!.icao24,this.plane!.time).subscribe(resp => {
+      this.height_data = [];
+      this.time_data = [];
+      this.path_arr = [];
+      let temptime = resp.path[resp.path.length-1][0]
+      
+      resp.path.forEach(item => {
+        this.path_arr.push([item[2], item[1]])
+        this.height_data.push(item[3]);
+        this.time_data.push((item[0]-temptime)/(60*24));
+      });
+
+      this.src = this.staticmaps.getData(this.path_arr, this.path_arr[0], this.airport);
+
+      this.graph = {
+        data: [
+            { x: this.time_data, y: this.height_data, type: 'scatter', mode: 'lines+points', marker: {color: 'red'} },
+        ],
+        layout: {width: 800, height: 500, title: this.airport + " : " + this.plane.icao24}
+      };
+    });
   }
 
   

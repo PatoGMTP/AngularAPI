@@ -52,7 +52,7 @@ export class StatsGraphComponent implements OnChanges {
         else this.dict[temp] = {name: temp, count: 1};
       }
 
-      console.log(Object.values(this.dict));
+      // console.log(Object.values(this.dict));
 
       for (const item of Object.values(this.dict))
       {
@@ -61,7 +61,7 @@ export class StatsGraphComponent implements OnChanges {
         this.locations[1].push(item.count);
       }
 
-      console.log(this.locations)
+      // console.log(this.locations)
   
       this.graph = {
         data: [

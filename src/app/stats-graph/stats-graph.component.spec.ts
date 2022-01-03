@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpClientModule, HttpResponse } from '@angular/common/http';
 
 import { StatsGraphComponent } from './stats-graph.component';
+import { AirportdataService } from '../airportdata.service';
 
 describe('StatsGraphComponent', () => {
   let component: StatsGraphComponent;
@@ -8,7 +10,9 @@ describe('StatsGraphComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatsGraphComponent ]
+      declarations: [ StatsGraphComponent ],
+      providers: [AirportdataService],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   });
@@ -21,5 +25,14 @@ describe('StatsGraphComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get necessary data and create graph', () => {
+    component.airport = "EDDF"
+    component.getData();
+
+    setTimeout(() => {
+      expect(component.graph.data).toBeTruthy();
+    }, 1000);
   });
 });

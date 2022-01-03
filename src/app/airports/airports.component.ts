@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-airports',
@@ -21,7 +21,7 @@ export class AirportsComponent implements OnInit {
     "EDDF", "EGLL", "LIRF", "UUEE"
   ];
 
-  constructor() { }
+  constructor(public renderer: Renderer2) { }
 
   ngOnInit(): void
   {

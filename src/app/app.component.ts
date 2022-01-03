@@ -7,4 +7,5 @@ import {decode, encode} from '@mapbox/polyline';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title: string = "AngularAPI";
 }

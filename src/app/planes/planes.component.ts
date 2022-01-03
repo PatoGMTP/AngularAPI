@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, OnChanges, SimpleChanges, Renderer2 } from '@angular/core';
 import { AirportdataService } from '../airportdata.service';
 import { myplane } from '../planeInt';
 
@@ -25,7 +25,7 @@ export class PlanesComponent implements OnChanges {
 
   planes?: string[];
 
-  constructor(private airdata: AirportdataService) { }
+  constructor(private airdata: AirportdataService, public renderer: Renderer2) { }
 
   ngOnInit(): void {
   }
